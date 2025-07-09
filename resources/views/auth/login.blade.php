@@ -37,6 +37,7 @@
             focus:border-green-50 border-green-50 focus:ring-0 rounded-none focus:outline-none">
                 </div>
             </div>
+                <x-input-error :messages="$errors->get('email')" class="mt-2" />
 
 
 
@@ -55,6 +56,7 @@
                     </button>
                 </div>
             </div>
+                <x-input-error :messages="$errors->get('password')" class="mt-2" />
 
             <!-- Remember Me Checkbox (di sebelah kiri) -->
            
