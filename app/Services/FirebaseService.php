@@ -26,9 +26,9 @@ class FirebaseService
     /**
      * Convenience helper to return all documents from a collection.
      */
-    public function getCollection(string $name)
+    public function getCollection(string $collection)
     {
-        return $this->firestore->collection($name)->documents();
+        return $this->firestore->collection($collection)->documents();
     }
 
     public function testConnection()
