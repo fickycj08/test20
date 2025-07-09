@@ -15,6 +15,16 @@ class FirebaseService
         ]);
     }
 
+    public function getFireStore()
+    {
+        return $this->firestore;
+    }
+
+    public function getCollection(string $collection)
+    {
+        return $this->firestore->collection($collection)->documents();
+    }
+
     public function testConnection()
     {
         try {
