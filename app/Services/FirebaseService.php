@@ -15,6 +15,22 @@ class FirebaseService
         ]);
     }
 
+    /**
+     * Get the underlying Firestore client instance.
+     */
+    public function getFirestore()
+    {
+        return $this->firestore;
+    }
+
+    /**
+     * Convenience helper to return all documents from a collection.
+     */
+    public function getCollection(string $collection)
+    {
+        return $this->firestore->collection($collection)->documents();
+    }
+
     public function testConnection()
     {
         try {

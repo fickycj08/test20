@@ -2,32 +2,32 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Http\Controllers\Controller;
 use App\Services\FirebaseService;
-use Illuminate\Http\Request;
 
 class datakendaraan extends Controller
 {
-    public function index ()
-    {
-        return view('datakendaraan.index');
+    protected FirebaseService $firebase;
 
-    $documents = $firebase->getCollection('vehicles'); 
+    public function __construct(FirebaseService $firebase)
+    {
+        $this->firebase = $firebase;
+    }
+
+    public function index()
+    {
+        // Komentar dari branch 'codex' dipertahankan untuk kejelasan.
+        // Fetching documents just to ensure Firestore connection is used.
+        $documents = $this->firebase->getCollection('vehicles');
 
         $data = [];
-
         foreach ($documents as $doc) {
-            $data[] = [
-                'userId' => $doc['userId'],
-                'model' => $doc['model'],
-                'nomor_polisi' => $doc['nomor_polisi'],
-                'tipe_bensin' => $doc['tipe_bensin'],
-                'transmisi' => $doc['transmisi'],
-                'kilometer' => $doc['kilometer'],
-            ];
+            // Menggunakan metode dari branch 'codex' karena lebih aman dan robust.
+            // Ini memeriksa apakah dokumen ada sebelum mengambil datanya.
+            if ($doc->exists()) {
+                $data[] = $doc->data();
+            }
         }
 
-        return view('firebase.index', compact('data'));
+        return view('datakendaraan.index', compact('data'));
     }
 }

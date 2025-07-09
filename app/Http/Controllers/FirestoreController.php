@@ -18,7 +18,7 @@ class FirestoreController extends Controller
 
     public function index()
     {
-        $firestore = $this->firebase->getFireStore();
+        $firestore = $this->firebase->getFirestore();
         $collection = $firestore->collection('users');
         $documents = $collection->documents();
 

@@ -21,3 +21,7 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+
+# Prevent sensitive diagnostics from being committed
+public/info.php
+
