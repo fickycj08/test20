@@ -5,29 +5,32 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Services\FirebaseService;
-use Illuminate\Http\Request;
 
 class datakendaraan extends Controller
 {
-    public function index ()
-    {
-        return view('datakendaraan.index');
+    protected FirebaseService $firebase;
 
-    $documents = $firebase->getCollection('vehicles'); 
+    public function __construct(FirebaseService $firebase)
+    {
+        $this->firebase = $firebase;
+    }
+
+    public function index()
+    {
+        $documents = $this->firebase->getCollection('vehicles');
 
         $data = [];
-
         foreach ($documents as $doc) {
             $data[] = [
-                'userId' => $doc['userId'],
-                'model' => $doc['model'],
+                'userId'       => $doc['userId'],
+                'model'        => $doc['model'],
                 'nomor_polisi' => $doc['nomor_polisi'],
-                'tipe_bensin' => $doc['tipe_bensin'],
-                'transmisi' => $doc['transmisi'],
-                'kilometer' => $doc['kilometer'],
+                'tipe_bensin'  => $doc['tipe_bensin'],
+                'transmisi'    => $doc['transmisi'],
+                'kilometer'    => $doc['kilometer'],
             ];
         }
 
-        return view('firebase.index', compact('data'));
+        return view('datakendaraan.index', compact('data'));
     }
 }
