@@ -20,12 +20,12 @@ Route::get('/cek-firestore', function () {
 });
 
 Route::get('/firestore', [FirestoreController::class, 'index']);
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Dashboard route handled by controller with auth and verification
+Route::get('/dashboard', [dashboardcontroller::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 Route::get('/datakendaraan', [datakendaraan::class, 'index'])->name('datakendaraan.index');
 Route::get('/jadwalservis', [jadwalservis::class, 'index'])->name('jadwalservis.index');
-Route::get('/dashboard', [dashboardcontroller::class, 'index'])->name('dashboard.index');
 Route::get('/sparepart', [sparepart::class, 'index'])->name('sparepart.index');
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
