@@ -102,7 +102,7 @@
         </div>
         <ul class="space-y-1 px-2">
           <li>
-            <a href="{{ route('dashboard.index') }}" class="group flex items-center p-3 bg-neutral-50 rounded-xl hover:bg-white transition-colors duration-300 ">
+            <a href="{{ route('dashboard') }}" class="group flex items-center p-3 bg-neutral-50 rounded-xl hover:bg-white transition-colors duration-300 ">
               <div class="flex items-center justify-center w-8 h-8 text-neutral-50 bg-red-600 rounded-lg mr-3">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
                   <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
